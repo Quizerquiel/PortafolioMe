@@ -1,7 +1,7 @@
 import { defineConfig } from 'vite';
 
 export default defineConfig({
-  base: '/PortafolioMe/',
+  base: '/',
   root: '.',
   publicDir: 'public',
   server: {
