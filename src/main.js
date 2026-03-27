@@ -35,30 +35,12 @@ window.addEventListener('scroll', () => {
 });
 
 // ========================================
-// Mobile menu toggle
-// ========================================
-const navToggle = document.getElementById('navToggle');
-const navMenu = document.getElementById('navMenu');
-
-navToggle.addEventListener('click', () => {
-    navToggle.classList.toggle('active');
-    navMenu.classList.toggle('open');
-});
-
-navMenu.querySelectorAll('.nav-link').forEach(link => {
-    link.addEventListener('click', () => {
-        navToggle.classList.remove('active');
-        navMenu.classList.remove('open');
-    });
-});
-
-// ========================================
 // Typing effect
 // ========================================
 const typingEl = document.getElementById('typingText');
 const phrases = [
     'Desarrollador Freelancer',
-    'Disenador de Software',
+    'Diseñador de Software',
     'Especialista en C# & .NET',
     'Creador de Soluciones Web'
 ];
@@ -100,8 +82,7 @@ const heroBg = document.querySelector('.hero-bg-effect');
 
 if (heroBg) {
     window.addEventListener('scroll', () => {
-        const scrolled = window.scrollY;
-        heroBg.style.transform = `translateY(${scrolled * 0.3}px)`;
+        heroBg.style.transform = `translateY(${window.scrollY * 0.3}px)`;
     });
 }
 
@@ -109,7 +90,7 @@ if (heroBg) {
 // Scroll reveal with stagger
 // ========================================
 const revealElements = document.querySelectorAll(
-    '.skill-card, .project-card, .timeline-item, .contact-card, .about-text, .about-stats, .service-card, .process-step, .testimonial-card'
+    '.project-card, .timeline-item, .contact-card, .about-text, .about-stats, .service-card'
 );
 
 revealElements.forEach(el => el.classList.add('reveal'));
@@ -117,7 +98,6 @@ revealElements.forEach(el => el.classList.add('reveal'));
 const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
-            // Stagger: find siblings with reveal class
             const parent = entry.target.parentElement;
             const siblings = parent.querySelectorAll('.reveal:not(.active)');
             siblings.forEach((sib, i) => {
@@ -164,41 +144,22 @@ if (statsSection) {
 }
 
 // ========================================
-// Smooth active nav link on scroll
-// ========================================
-const sections = document.querySelectorAll('section[id]');
-
-window.addEventListener('scroll', () => {
-    const scrollY = window.scrollY + 100;
-
-    sections.forEach(section => {
-        const top = section.offsetTop;
-        const height = section.offsetHeight;
-        const id = section.getAttribute('id');
-        const link = document.querySelector(`.nav-link[href="#${id}"]`);
-
-        if (link) {
-            link.classList.toggle('active', scrollY >= top && scrollY < top + height);
-        }
-    });
-});
-
-// ========================================
 // Contact form
 // ========================================
 const contactForm = document.getElementById('contactForm');
 
-contactForm.addEventListener('submit', (e) => {
-    e.preventDefault();
+if (contactForm) {
+    contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
 
-    const name = contactForm.querySelector('#name').value;
-    const email = contactForm.querySelector('#email').value;
-    const message = contactForm.querySelector('#message').value;
+        const name = contactForm.querySelector('#name').value;
+        const email = contactForm.querySelector('#email').value;
+        const message = contactForm.querySelector('#message').value;
 
-    // Open mailto with form data
-    const subject = encodeURIComponent(`Contacto desde portafolio - ${name}`);
-    const body = encodeURIComponent(`Nombre: ${name}\nEmail: ${email}\n\nMensaje:\n${message}`);
-    window.location.href = `mailto:padillajosueezequiel@gmail.com?subject=${subject}&body=${body}`;
+        const subject = encodeURIComponent(`Contacto desde portafolio - ${name}`);
+        const body = encodeURIComponent(`Nombre: ${name}\nEmail: ${email}\n\nMensaje:\n${message}`);
+        window.location.href = `mailto:padillajosueezequiel@gmail.com?subject=${subject}&body=${body}`;
 
-    contactForm.reset();
-});
+        contactForm.reset();
+    });
+}

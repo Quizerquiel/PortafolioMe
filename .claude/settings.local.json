@@ -10,7 +10,16 @@
       "Bash(git remote:*)",
       "WebFetch(domain:quizerquiel.github.io)",
       "Bash(curl -s https://quizerquiel.github.io/)",
-      "Bash(cp:*)"
+      "Bash(cp:*)",
+      "Bash(netstat -ano)",
+      "Bash(taskkill //PID 15900 //F)",
+      "Bash(taskkill //PID 2876 //F)",
+      "Bash(curl -s http://localhost:3000/)",
+      "Bash(taskkill //PID 24260 //F)",
+      "Bash(taskkill //PID 23196 //F)",
+      "Bash(rm /c/Users/padil/Documents/PortafolioPersonal/assets/*)",
+      "Bash(cp /c/Users/padil/Documents/PortafolioPersonal/dist/assets/* /c/Users/padil/Documents/PortafolioPersonal/assets/)",
+      "Bash(git push:*)"
     ]
   }
 }
